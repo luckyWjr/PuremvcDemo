@@ -16,7 +16,7 @@ public class RefreshGoodsUICommand : SimpleCommand
 
         foreach (var goodsData in shopProxy.goodsList)
         {
-            // shopPanelMediator.
+            shopPanelMediator.AddGoods(goodsData);
         }
     }
 }

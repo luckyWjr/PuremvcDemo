@@ -14,10 +14,12 @@ public class UIPanelMediator : Mediator
     static object LoadPrefab(string url)
     {
 #if UNITY_EDITOR
-        Transform panelTransform =  Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(url)).transform;
+        GameObject go = Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(url));
+        Transform panelTransform = go.transform;
         panelTransform.SetParent(GameObject.Find("Canvas").transform);
         panelTransform.localPosition = Vector3.zero;
         panelTransform.localScale = Vector3.one;
+        go.SetActive(true);
         return panelTransform;
 #endif
         return null;

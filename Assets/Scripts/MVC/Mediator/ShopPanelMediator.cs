@@ -17,8 +17,11 @@ public class ShopPanelMediator : UIPanelMediator
         base.OnRegister();
         applicationFacade.SendCommand<RefreshGoodsUICommand>();
     }
-    
-    // public void AddGoods
+
+    public void AddGoods(GoodsData data)
+    {
+        m_panel.AddGoods(data);
+    }
 
     void Buy()
     {

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ListViewItem : MonoBehaviour
 {
     public virtual object data { get; set; }
-    public Action<ListViewItem, bool> onValueChanged;
+    public Action<ListViewItem, bool> onListValueChanged;
 
     Toggle m_toggle;
     public Toggle toggle
@@ -32,13 +32,18 @@ public class ListViewItem : MonoBehaviour
         toggle.onValueChanged.AddListener(OnValueChanged);
     }
 
-    void OnValueChanged(bool isOn)
+    public virtual void SetData(object data)
     {
-        onValueChanged?.Invoke(this, isOn);
-        OnClicked(isOn);
+        this.data = data;
     }
 
-    protected virtual void OnClicked(bool isOn)
+    void OnValueChanged(bool isOn)
+    {
+        onListValueChanged?.Invoke(this, isOn);
+        OnItemValueChanged(isOn);
+    }
+
+    protected virtual void OnItemValueChanged(bool isOn)
     {
         
     }

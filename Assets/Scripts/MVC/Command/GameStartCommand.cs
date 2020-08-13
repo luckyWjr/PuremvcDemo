@@ -14,6 +14,7 @@ public class GameStartCommand : SimpleCommand
         userProxy.SetAmount(10000);
         
         ApplicationFacade.applicationInstance.RegisterProxy<ShopProxy>(new ShopData(GetGoodsDataList()));
+        ApplicationFacade.applicationInstance.RegisterCommand<RefreshGoodsUICommand>();
         ApplicationFacade.applicationInstance.RegisterMediator(new ShopPanelMediator("Assets/Res/Prefabs/ShopPanel.prefab"));
     }
 

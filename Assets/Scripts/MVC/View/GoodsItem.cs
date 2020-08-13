@@ -16,15 +16,15 @@ public class GoodsItem : ListViewItem
     public Text priceText;
     public Text BoughHintText;
     
-    public void SetData(GoodsData data)
+    public override void SetData(object data)
     {
-        m_data = data;
-        nameText.text = data.goodsName;
-        priceText.text = $"{data.goodsPrice}点券";
+        base.SetData(data);
+        nameText.text = m_data.goodsName;
+        priceText.text = $"{m_data.goodsPrice}点券";
     }
 
-    protected override void OnClicked(bool isOn)
+    protected override void OnItemValueChanged(bool isOn)
     {
-        base.OnClicked(isOn);
+        base.OnItemValueChanged(isOn);
     }
 }

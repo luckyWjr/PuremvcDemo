@@ -24,7 +24,7 @@ public class ListView : MonoBehaviour
 
     List<ListViewItem> m_selectedItemList;
     
-    void Start()
+    void Awake()
     {
         m_transform = transform;
         m_gridLayoutGroup = GetComponent<GridLayoutGroup>();
@@ -37,7 +37,9 @@ public class ListView : MonoBehaviour
     {
         m_itemList.Add(item);
         item.transform.SetParent(m_transform);
-        item.onValueChanged = OnValueChanged;
+        item.transform.localScale = Vector3.one;
+        item.onListValueChanged = OnValueChanged;
+        item.gameObject.SetActive(true);
     }
 
     void OnValueChanged(ListViewItem item, bool isOn)
@@ -46,8 +48,8 @@ public class ListView : MonoBehaviour
         {
             if (selectType == ESelectType.Single)
             {
-                foreach (var selectedItem in m_selectedItemList)
-                    selectedItem.isOn = false;
+                for (int i = 0; i < m_selectedItemList.Count; i++)
+                    m_selectedItemList[i].isOn = false;
                 m_selectedItemList.Clear();
                 m_selectedItemList.Add(item);
             }
