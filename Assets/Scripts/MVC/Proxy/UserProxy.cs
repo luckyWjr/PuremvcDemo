@@ -12,14 +12,10 @@ public class UserProxy : Proxy
     {
         m_userData = data as UserData;
     }
-    
-    public void SetAmount(int amount)
-    {
-        m_userData.amount = amount;
-    }
 
-    public void ReduceAmount(int amount)
+    public int amount
     {
-        m_userData.amount -= amount;
+        get => m_userData.amount;
+        set => m_userData.amount = value;
     }
 }

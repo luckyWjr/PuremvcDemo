@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\MVC\Command\BuyCommand.cs" />
      <Compile Include="Assets\Scripts\MVC\Command\GameStartCommand.cs" />
      <Compile Include="Assets\Scripts\MVC\Command\RefreshGoodsUICommand.cs" />
+     <Compile Include="Assets\Scripts\MVC\Command\ShopInitCommand.cs" />
      <Compile Include="Assets\Scripts\MVC\Data\ShopData.cs" />
      <Compile Include="Assets\Scripts\MVC\Data\UserData.cs" />
      <Compile Include="Assets\Scripts\MVC\Mediator\ShopPanelMediator.cs" />
@@ -73,6 +74,7 @@
      <Compile Include="Assets\Scripts\MVC\View\ListView.cs" />
      <Compile Include="Assets\Scripts\MVC\View\ListViewItem.cs" />
      <Compile Include="Assets\Scripts\MVC\View\ShopPanel.cs" />
+     <Compile Include="Assets\Scripts\Utility\GlobalDefine.cs" />
      <Compile Include="Assets\Thirds\PureMVC\Core\Controller.cs" />
      <Compile Include="Assets\Thirds\PureMVC\Core\Model.cs" />
      <Compile Include="Assets\Thirds\PureMVC\Core\View.cs" />

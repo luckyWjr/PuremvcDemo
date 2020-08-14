@@ -42,6 +42,13 @@ public class ApplicationFacade : Facade
         RegisterCommand<GameStartCommand>();
     }
 
+    public T RegisterAndRetrieveProxy<T>(object data) where T : Proxy
+    {
+        RegisterProxy<T>(data);
+        return RetrieveProxy<T>();
+    }
+    
+    
     public void RegisterProxy<T>(object data) where T : Proxy
     {
         T proxy = Activator.CreateInstance(typeof(T), new object[] { typeof(T).FullName, data }) as T;
@@ -53,6 +60,12 @@ public class ApplicationFacade : Facade
         return RetrieveProxy(typeof(T).FullName) as T;
     }
     
+    public void RegisterAndSendCommand<T>(object body = null, string type = null) where T : SimpleCommand, new()
+    {
+        RegisterCommand<T>();
+        SendCommand<T>(body, type);
+    }
+    
     public void RegisterCommand<T>() where T : SimpleCommand, new()
     {
         RegisterCommand(typeof(T).FullName, () => new T());
@@ -61,6 +74,18 @@ public class ApplicationFacade : Facade
     public void SendCommand<T>(object body = null, string type = null) where T : SimpleCommand
     {
         SendNotification(typeof(T).FullName, body, type);
+    }
+
+    public T RegisterAndRetrieveMediator<T>(string url) where T : UIPanelMediator
+    {
+        RegisterMediator<T>(url);
+        return RetrieveMediator<T>();
+    }
+    
+    public void RegisterMediator<T>(string url) where T : UIPanelMediator
+    {
+        T uiPanel = Activator.CreateInstance(typeof(T), url) as T;
+        RegisterMediator(uiPanel);
     }
 
     public T RetrieveMediator<T>() where T : Mediator

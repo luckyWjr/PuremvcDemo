@@ -38,7 +38,7 @@ public class ListView : MonoBehaviour
         m_itemList.Add(item);
         item.transform.SetParent(m_transform);
         item.transform.localScale = Vector3.one;
-        item.onListValueChanged = OnValueChanged;
+        item.AddValueChangedHandle(OnValueChanged);
         item.gameObject.SetActive(true);
     }
 

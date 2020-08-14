@@ -5,11 +5,12 @@ using UnityEngine.UI;
 public class GoodsItem : ListViewItem
 {
     GoodsData m_data;
-
+    public GoodsData goodsData => m_data;
+        
     public override object data
     {
-        get => m_data;
         set => m_data = (GoodsData)value;
+        get => m_data;
     }
 
     public Text nameText;
@@ -21,10 +22,6 @@ public class GoodsItem : ListViewItem
         base.SetData(data);
         nameText.text = m_data.goodsName;
         priceText.text = $"{m_data.goodsPrice}点券";
-    }
-
-    protected override void OnItemValueChanged(bool isOn)
-    {
-        base.OnItemValueChanged(isOn);
+        BoughHintText.gameObject.SetActive(false);
     }
 }
